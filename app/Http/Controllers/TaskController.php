@@ -24,17 +24,17 @@ use OpenApi\Annotations\Delete;
  * )
  */
 
- 
+
 
 
 
 class TaskController extends Controller
 {
-/**
+    /**
      * Tasks List
      * @OA\Get (
      *     path="/api/tasks",
-     *     tags={"tasks"},
+     *     tags={"ListTasks"},
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -93,7 +93,7 @@ class TaskController extends Controller
         }
     }
 
-    
+
     public function create()
     {
         //
@@ -102,21 +102,35 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-     /**
+    /**
      * Crea uan tasca
-     * @OA\Put (
+     * @OA\Post (
      *     path="/api/tasks",
-     *     tags={"Tasks"},
+     *     tags={"CreateTask"},
      *     @OA\Response(
      *         response=201,
      *         description="Task created successfully",
-     *  
+     *     ),
+     *    @OA\RequestBody(
+     *         required=true,
+     *         description="User details",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="name", type="string", example="Task swaggger"),
+     *             @OA\Property(property="description", type="string", example="This a typical descrition for a task"),
+     *             @OA\Property(property="user_id", type="string", example="2"),
+
+     *         )
      *     ),
      *      @OA\Response(
      *          response=422,
      *          description="Validation error",
+     *      ),
+     *      @OA\Response(
+     *          response=405,
+     *          description="Validation error",
      *      )
-     * )
+     *)
+     *)
      */
     public function store(Request $request)
     {

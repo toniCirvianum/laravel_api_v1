@@ -18,7 +18,7 @@
         "/api/tasks": {
             "get": {
                 "tags": [
-                    "tasks"
+                    "ListTasks"
                 ],
                 "summary": "Tasks List",
                 "operationId": "471d938a3bfaeb6fbd981d7c3e2728b0",
@@ -65,17 +65,45 @@
                     }
                 }
             },
-            "put": {
+            "post": {
                 "tags": [
-                    "Tasks"
+                    "CreateTask"
                 ],
                 "summary": "Crea uan tasca",
-                "operationId": "784f70b34d0c905d33cea36380c11581",
+                "operationId": "f803ebdb2300acdb7e93bbe8d0b9a2e8",
+                "requestBody": {
+                    "description": "User details",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Task swaggger"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "This a typical descrition for a task"
+                                    },
+                                    "user_id": {
+                                        "type": "string",
+                                        "example": "2"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "201": {
                         "description": "Task created successfully"
                     },
                     "422": {
+                        "description": "Validation error"
+                    },
+                    "405": {
                         "description": "Validation error"
                     }
                 }
@@ -84,12 +112,12 @@
     },
     "tags": [
         {
-            "name": "tasks",
-            "description": "tasks"
+            "name": "ListTasks",
+            "description": "ListTasks"
         },
         {
-            "name": "Tasks",
-            "description": "Tasks"
+            "name": "CreateTask",
+            "description": "CreateTask"
         }
     ]
 }
