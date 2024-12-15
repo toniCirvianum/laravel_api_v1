@@ -1,0 +1,95 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Tasks API",
+        "description": "API for managing tasks",
+        "contact": {
+            "email": "toni.fernandez@cirvianum.cat"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost",
+            "description": "Local development server"
+        }
+    ],
+    "paths": {
+        "/api/tasks": {
+            "get": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Tasks List",
+                "operationId": "471d938a3bfaeb6fbd981d7c3e2728b0",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "1"
+                                                    },
+                                                    "descriptioon": {
+                                                        "type": "string",
+                                                        "example": "Non placeat illum ex dolorem sint fugit natus."
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T00:09:16.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T12:33:45.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Tasks"
+                ],
+                "summary": "Crea uan tasca",
+                "operationId": "784f70b34d0c905d33cea36380c11581",
+                "responses": {
+                    "201": {
+                        "description": "Task created successfully"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "tasks",
+            "description": "tasks"
+        },
+        {
+            "name": "Tasks",
+            "description": "Tasks"
+        }
+    ]
+}

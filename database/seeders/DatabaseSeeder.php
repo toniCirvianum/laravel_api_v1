@@ -1,0 +1,40 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Task;
+use App\Models\User;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.
+     */
+    public function run(): void
+    {
+        // User::factory(10)->create();
+
+        if (User::where('email', 'toni@toni.es')->count() == 0 ){
+            User::factory()->create([
+                'name' => 'Toni Fdz',
+                'email' => 'toni@toni.es',
+                'password' => bcrypt('123'),
+            ]);
+        }
+        if (User::where('email', 'raquel@raquel.es')->count() == 0 ){  
+            User::factory()->create([
+                'name' => 'Raquel brt',
+                'email' => 'raquel@raquel.es',
+                'password' => bcrypt('123'),
+            ]);
+        }
+ 
+        
+
+        Task::factory(10)->create();
+
+
+    }
+}
