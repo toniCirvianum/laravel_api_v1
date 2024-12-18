@@ -20,11 +20,13 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): Response
     {
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'password' => ['required', 'confirmed', 'min:5']
         ]);
+
 
         $user = User::create([
             'name' => $request->name,
@@ -37,5 +39,13 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return response()->noContent();
+        // $user = Auth::user();
+        // $token = $user->createToken($user->name . '-token')->plainTextToken;
+        // return response()->json([
+        //     'user' => $user,
+        //     'message' => 'new user registeresd',
+        //     'hhtCode' => 200,
+        //     'token' => $token
+        // ]);
     }
 }

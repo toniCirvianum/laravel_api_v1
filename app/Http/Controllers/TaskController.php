@@ -112,10 +112,7 @@ class TaskController extends Controller
      *         description="Task created successfully",
      *     ),
      *    @OA\RequestBody(
-     *         required=true,
-     *         description="User details",
-     *         @OA\JsonContent(
-     *             @OA\Property(property="name", type="string", example="Task swaggger"),
+     *         required=true,POST            api/tasks ....................................................................... tasks.store › name", type="string", example="Task swaggger"),
      *             @OA\Property(property="description", type="string", example="This a typical descrition for a task"),
      *             @OA\Property(property="user_id", type="string", example="2"),
 
